@@ -42,5 +42,10 @@ public class API_Test {
         System.out.println("authenticity_token = " + authenticity_token);
     }
 
+    @Test(dependsOnMethods = "PreLogin")
+    public void Login(){
+
+    }
+
 
 }

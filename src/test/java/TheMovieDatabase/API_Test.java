@@ -21,7 +21,6 @@ public class API_Test {
 
     RequestSpecification reqSpec;
 
-    WebDriver driver = new ChromeDriver();
     @BeforeClass
     public void SetUp() {
         baseURI = "https://www.themoviedb.org";
@@ -34,8 +33,6 @@ public class API_Test {
 
     @Test
     public void PreLogin(){
-        driver.get("https://www.themoviedb.org/login");
-        WebElement path= driver.findElement(By.cssSelector());
 
         String authenticity_token=
                 given()

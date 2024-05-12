@@ -2,10 +2,15 @@ package TheMovieDatabase;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.http.Cookies;
 import io.restassured.specification.RequestSpecification;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import org.yaml.snakeyaml.tokens.Token;
+
+
+import java.sql.Driver;
 
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
@@ -16,7 +21,7 @@ public class API_Test {
 
     RequestSpecification reqSpec;
 
-
+    WebDriver driver = new ChromeDriver();
     @BeforeClass
     public void SetUp() {
         baseURI = "https://www.themoviedb.org";
@@ -29,6 +34,8 @@ public class API_Test {
 
     @Test
     public void PreLogin(){
+        driver.get("https://www.themoviedb.org/login");
+        WebElement path= driver.findElement(By.cssSelector());
 
         String authenticity_token=
                 given()
@@ -37,7 +44,7 @@ public class API_Test {
                         .get("/login")
                         .then()
                         .statusCode(200)
-                        .extract().response().htmlPath().getString("authenticity_token");
+                        .extract().htmlPath().getString("");
 
         System.out.println("authenticity_token = " + authenticity_token);
     }

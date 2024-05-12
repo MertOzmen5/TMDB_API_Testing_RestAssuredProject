@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Cookies;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.*;
+import org.yaml.snakeyaml.tokens.Token;
 
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
@@ -24,6 +25,21 @@ public class API_Test {
                 .addHeader("Authorization","Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5Nzg2NzI1ZjBiZmNkMjE3NzYxZmVlZGJkYTI5YTQ5MyIsInN1YiI6IjY2MzUxZTNjNDcwZWFkMDEyNTExY2IwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xMGIVWSwV7Lq7N_Uoun82Wh1Svp-Ox7wPbeiGMJ720E")
                 .setContentType(ContentType.JSON)
                 .build();
+    }
+
+    @Test
+    public void PreLogin(){
+
+        String authenticity_token=
+                given()
+
+                        .when()
+                        .get("/login")
+                        .then()
+                        .statusCode(200)
+                        .extract().response().htmlPath().getString("authenticity_token");
+
+        System.out.println("authenticity_token = " + authenticity_token);
     }
 
 

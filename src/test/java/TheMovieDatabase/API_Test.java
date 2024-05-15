@@ -195,8 +195,19 @@ public class API_Test {
 
     }
 
-    @Test
+    @Test(dependsOnMethods = "GetRatedMovies")
     public void GetRatedTV(){
+
+        given()
+                .spec(reqSpec)
+
+
+                .when()
+                .get(url + "/" + id + "/" + "rated"+"/tv")
+
+                .then()
+                .statusCode(200)
+                ;
 
 
     }

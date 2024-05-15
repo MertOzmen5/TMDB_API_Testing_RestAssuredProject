@@ -179,6 +179,11 @@ public class API_Test {
                 ;
     }
 
+    @Test(dependsOnMethods = "GetFavoriteTV")
+    public void GetRatedMovies(){
+
+    }
+
 
 
 }

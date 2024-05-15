@@ -393,6 +393,10 @@ public class API_Test {
                 .statusCode(200)
                 .log().body()
                 ;
+    }
+
+    @Test(dependsOnMethods = "SearchForKeywords")
+    public void AddMovieRating(){
 
     }
 

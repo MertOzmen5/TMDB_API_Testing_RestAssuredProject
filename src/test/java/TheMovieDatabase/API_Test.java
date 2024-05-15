@@ -227,6 +227,27 @@ public class API_Test {
 
     }
 
+    @Test(dependsOnMethods = "GetWatchlistMovies")
+    public void GetWatchlistTV(){
+
+        int page=
+        given()
+                .spec(reqSpec)
+
+                .when()
+                .get(url + "/" + id + "/" + "watchlist"+"/tv")
+
+
+                .then()
+                .statusCode(200)
+                .extract().path("page")
+        ;
+
+        Assert.assertTrue(page==1);
+
+    }
+
+
 
 
 }

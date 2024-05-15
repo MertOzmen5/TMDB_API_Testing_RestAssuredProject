@@ -419,6 +419,16 @@ public class API_Test {
     @Test(dependsOnMethods = "AddMovieRating")
     public void DeleteMovieRating(){
 
+        given()
+                .spec(reqSpec)
+
+                .when()
+                .delete(url2+movieID+"/rating")
+
+                .then()
+                .statusCode(200)
+                ;
+
     }
 
     }

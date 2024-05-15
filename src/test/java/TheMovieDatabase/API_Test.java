@@ -214,6 +214,17 @@ public class API_Test {
     @Test(dependsOnMethods = "GetRatedTV")
     public void GetWatchlistMovies(){
 
+        given()
+                .spec(reqSpec)
+
+                .when()
+                .get(url + "/" + id + "/" + "watchlist"+"/movies")
+
+
+                .then()
+                .statusCode(200)
+                ;
+
     }
 
 

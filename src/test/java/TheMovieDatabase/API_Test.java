@@ -428,6 +428,10 @@ public class API_Test {
                 .then()
                 .statusCode(200)
                 ;
+    }
+
+    @Test(dependsOnMethods = "DeleteMovieRating")
+    public void UnauthorizedAccess(){
 
     }
 

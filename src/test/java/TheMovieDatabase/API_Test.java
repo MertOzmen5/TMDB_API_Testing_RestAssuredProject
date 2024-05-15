@@ -416,6 +416,11 @@ public class API_Test {
 
     }
 
+    @Test(dependsOnMethods = "AddMovieRating")
+    public void DeleteMovieRating(){
+
+    }
+
     }
 
 

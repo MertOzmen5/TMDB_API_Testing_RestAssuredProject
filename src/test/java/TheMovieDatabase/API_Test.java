@@ -21,12 +21,12 @@ public class API_Test {
 
     RequestSpecification reqSpec;
     String authenticity_token;
-    Faker randomUreteci = new Faker();
     String userName = "";
     String password = "";
     String url = "https://api.themoviedb.org/3/account";
     int id;
     String url1="https://api.themoviedb.org/3/genre/";
+    String url2="https://api.themoviedb.org/3/movie/";
 
 
     @BeforeClass
@@ -289,6 +289,22 @@ public class API_Test {
 
     @Test(dependsOnMethods = "GetNowPlayingMovies")
     public void GetPopularMovies(){
+
+        int id=
+        given()
+                .spec(reqSpec)
+
+
+                .when()
+                .get(url2+"popular")
+
+
+                .then()
+                .statusCode(200)
+                .extract().path("results.id[0]")
+                ;
+
+        Assert.assertEquals(id,823464);
 
     }
 

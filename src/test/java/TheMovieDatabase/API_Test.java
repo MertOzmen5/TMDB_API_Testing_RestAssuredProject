@@ -1,11 +1,16 @@
 package TheMovieDatabase;
 
+import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.*;
 
+
+import javax.swing.text.html.HTML;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
@@ -16,6 +21,9 @@ public class API_Test {
 
     RequestSpecification reqSpec;
     String authenticity_token;
+    Faker randomUreteci=new Faker();
+    String userName="";
+    String password="";
 
     @BeforeClass
     public void SetUp() {
@@ -42,8 +50,33 @@ public class API_Test {
         System.out.println("authenticity_token = " + authenticity_token);
     }
 
-    @Test(dependsOnMethods = "PreLogin")
+   // @Test(dependsOnMethods = "PreLogin")
     public void Login(){
+
+        Map<String,Object> body=new HashMap<>();
+        userName=randomUreteci.name().fullName();
+        password="123456789";
+        body.put("username",userName);
+        body.put("password",password);
+        body.put("authenticity_token",authenticity_token);
+
+
+        given()
+                .contentType(ContentType.HTML)
+                .body(body)
+
+                .when()
+                .post("/login")
+
+
+                .then()
+                .statusCode(200)
+
+                ;
+    }
+
+    @Test
+    public void GetAccountDetails(){
 
     }
 

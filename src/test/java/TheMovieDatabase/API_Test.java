@@ -27,6 +27,7 @@ public class API_Test {
     int id;
     String url1 = "https://api.themoviedb.org/3/genre/";
     String url2 = "https://api.themoviedb.org/3/movie/";
+    String url3="https://www.themoviedb.org/search";
 
 
     @BeforeClass
@@ -379,6 +380,19 @@ public class API_Test {
 
     @Test(dependsOnMethods = "GetMovieDetails")
     public void SearchForKeywords(){
+
+        given()
+                .spec(reqSpec)
+                .param("query","anı")
+
+
+                .when()
+                .get(url3)
+
+                .then()
+                .statusCode(200)
+                .log().body()
+                ;
 
     }
 

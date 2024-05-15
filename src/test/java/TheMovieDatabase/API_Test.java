@@ -308,6 +308,11 @@ public class API_Test {
 
     }
 
+    @Test(dependsOnMethods = "GetPopularMovies")
+    public void GetTopRatedMovies(){
+
+    }
+
 
 
 

@@ -358,6 +358,11 @@ public class API_Test {
 
     }
 
+    @Test(dependsOnMethods = "SearchForMovies")
+    public void GetMovieDetails(){
+
+    }
+
     }
 
 

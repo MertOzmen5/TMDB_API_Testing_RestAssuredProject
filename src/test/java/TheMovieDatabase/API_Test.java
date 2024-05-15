@@ -26,6 +26,7 @@ public class API_Test {
     String password = "";
     String url = "https://api.themoviedb.org/3/account";
     int id;
+    String url1="https://api.themoviedb.org/3/genre/";
 
 
     @BeforeClass
@@ -244,6 +245,26 @@ public class API_Test {
         ;
 
         Assert.assertTrue(page==1);
+
+    }
+
+    @Test(dependsOnMethods = "GetWatchlistTV")
+    public void GetMovieGenres(){
+
+        int id=
+                given()
+                        .spec(reqSpec)
+
+                        .when()
+                        .get(url1 + "movie" + "/"+"list")
+
+
+                        .then()
+                        .statusCode(200)
+                        .extract().path("genres.id[0]")
+                ;
+
+        Assert.assertTrue(id==28);
 
     }
 

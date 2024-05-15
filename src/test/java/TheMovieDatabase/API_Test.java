@@ -28,6 +28,7 @@ public class API_Test {
     String url1 = "https://api.themoviedb.org/3/genre/";
     String url2 = "https://api.themoviedb.org/3/movie/";
     String url3="https://www.themoviedb.org/search";
+    String url4="https://api.themoviedb.org/3/list/";
     int movieID=9648;
 
 
@@ -433,9 +434,31 @@ public class API_Test {
     @Test(dependsOnMethods = "DeleteMovieRating")
     public void UnauthorizedAccess(){
 
+        Map<String, Integer> body2 = new HashMap<>();
+        body2.put("media_id",movieID);
+
+
+        int code=
+        given()
+                .spec(reqSpec)
+                .pathParam("listID", "[valid_list_id]")
+                .queryParam("session_id","[invalid_session_id]")
+                .body(body2)
+
+
+                .when()
+                .post(url4+"{listID}"+"/add_item")
+
+
+                .then()
+                .statusCode(401)
+                .body("status_code",equalTo(3))
+                .extract().path("status_code")
+                ;
+        Assert.assertEquals(code,3);
     }
 
-    }
+}
 
 
 

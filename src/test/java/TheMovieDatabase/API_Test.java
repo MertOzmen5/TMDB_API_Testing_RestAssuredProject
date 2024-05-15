@@ -287,6 +287,11 @@ public class API_Test {
         Assert.assertEquals(dates,"2024-05-22");
     }
 
+    @Test(dependsOnMethods = "GetNowPlayingMovies")
+    public void GetPopularMovies(){
+
+    }
+
 
 
 

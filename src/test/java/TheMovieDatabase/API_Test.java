@@ -268,6 +268,9 @@ public class API_Test {
 
     }
 
+    @Test
+    public void GetNowPlayingMovies
+
 
 
 

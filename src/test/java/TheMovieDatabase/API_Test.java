@@ -344,6 +344,18 @@ public class API_Test {
     @Test(dependsOnMethods = "GetUpcomingMovies")
     public void SearchForMovies(){
 
+        given()
+                .spec(reqSpec)
+                .param("query","esaretin bedeli")
+
+                .when()
+                .get("https://api.themoviedb.org/3/search/movie")
+
+
+                .then()
+                .statusCode(200)
+                ;
+
     }
 
     }

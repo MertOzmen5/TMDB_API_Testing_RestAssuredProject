@@ -5,6 +5,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 
 import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 
@@ -147,8 +148,22 @@ public class API_Test {
                 .body("status_message", equalTo("The item/record was updated successfully."))
         ;
 
-
     }
+
+    @Test(dependsOnMethods = "AddtoWatchlist")
+    public void GetFavoriteMovies(){
+
+        given()
+                .spec(reqSpec)
+
+                .when()
+                .get(url + "/" + id + "/" + "favorite"+"/movies")
+
+                .then()
+                .statusCode(200)
+                ;
+    }
+
 
 
 }

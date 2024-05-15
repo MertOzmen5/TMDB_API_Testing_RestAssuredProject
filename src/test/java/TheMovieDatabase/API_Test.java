@@ -28,6 +28,7 @@ public class API_Test {
     String url1 = "https://api.themoviedb.org/3/genre/";
     String url2 = "https://api.themoviedb.org/3/movie/";
     String url3="https://www.themoviedb.org/search";
+    int movieID=9648;
 
 
     @BeforeClass
@@ -367,7 +368,7 @@ public class API_Test {
                 .spec(reqSpec)
 
                 .when()
-                .get(url2+9648)
+                .get(url2+movieID)
 
                 .then()
                 .statusCode(200)
@@ -397,6 +398,21 @@ public class API_Test {
 
     @Test(dependsOnMethods = "SearchForKeywords")
     public void AddMovieRating(){
+        Map<String,Double> values=new HashMap<>();
+        Double value=8.5;
+        values.put("value",value);
+
+        given()
+                .spec(reqSpec)
+                .body(values)
+
+                .when()
+                .post(url2+movieID+"/rating")
+
+                .then()
+                .statusCode(201)
+                .body("success",equalTo(true))
+                ;
 
     }
 

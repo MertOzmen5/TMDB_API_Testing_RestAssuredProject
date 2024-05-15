@@ -97,17 +97,27 @@ public class API_Test {
 
     }
 
-    @Test
+    @Test(dependsOnMethods = "GetAccountDetails")
     public void AddMovietoFavorites(){
+        Map<String,Object> body1=new HashMap<>();
+        String media_type="movie";
+        String media_id="6210c6bb9824c8001be3df40";
+        Boolean favorite=true;
+
+        body1.put("media_type",media_type);
+        body1.put("media_id",media_id);
+        body1.put("favorite",favorite);
 
         given()
                 .spec(reqSpec)
+                .body(body1)
 
                 .when()
-                .post(url+id)
+                .post(url+"/"+id+"/"+"favorite")
 
 
                 .then()
+                .statusCode(201)
 
                 ;
 

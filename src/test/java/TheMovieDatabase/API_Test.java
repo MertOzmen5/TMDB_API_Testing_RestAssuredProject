@@ -323,6 +323,11 @@ public class API_Test {
         Assert.assertEquals(id, 278);
     }
 
+    @Test(dependsOnMethods = "GetTopRatedMovies")
+    public void GetUpcomingMovies(){
+
+    }
+
 
     }
 

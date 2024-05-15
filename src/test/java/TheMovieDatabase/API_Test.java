@@ -209,6 +209,10 @@ public class API_Test {
                 .statusCode(200)
                 ;
 
+    }
+
+    @Test(dependsOnMethods = "GetRatedTV")
+    public void GetWatchlistMovies(){
 
     }
 

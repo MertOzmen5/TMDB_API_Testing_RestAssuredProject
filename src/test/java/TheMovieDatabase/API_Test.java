@@ -123,5 +123,11 @@ public class API_Test {
 
     }
 
+    @Test(dependsOnMethods = "AddMovietoFavorites")
+    public void AddtoWatchlist(){
+
+
+    }
+
 
 }

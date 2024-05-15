@@ -341,6 +341,11 @@ public class API_Test {
         Assert.assertEquals(dates, "2024-06-12");
     }
 
+    @Test(dependsOnMethods = "GetUpcomingMovies")
+    public void SearchForMovies(){
+
+    }
+
     }
 
 

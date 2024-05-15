@@ -268,8 +268,24 @@ public class API_Test {
 
     }
 
-    @Test
-    public void GetNowPlayingMovies
+    @Test(dependsOnMethods = "GetMovieGenres")
+    public void GetNowPlayingMovies(){
+
+        String dates=
+        given()
+
+                .spec(reqSpec)
+
+                .when()
+                .get("https://api.themoviedb.org/3/movie/now_playing")
+
+                .then()
+                .statusCode(200)
+                .extract().path("dates.maximum")
+                ;
+
+        Assert.assertEquals(dates,"2024-05-22");
+    }
 
 
 

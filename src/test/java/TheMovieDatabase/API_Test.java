@@ -361,6 +361,20 @@ public class API_Test {
     @Test(dependsOnMethods = "SearchForMovies")
     public void GetMovieDetails(){
 
+        int id=
+        given()
+                .spec(reqSpec)
+
+                .when()
+                .get(url2+9648)
+
+                .then()
+                .statusCode(200)
+                .extract().path("genres.id[0]")
+                ;
+
+        Assert.assertEquals(id,35);
+
     }
 
     }

@@ -325,11 +325,25 @@ public class API_Test {
 
     @Test(dependsOnMethods = "GetTopRatedMovies")
     public void GetUpcomingMovies(){
+        String dates =
+                given()
+                        .spec(reqSpec)
+
+
+                        .when()
+                        .get(url2 + "upcoming")
+
+
+                        .then()
+                        .statusCode(200)
+                        .extract().path("dates.maximum");
+
+        Assert.assertEquals(dates, "2024-06-12");
+    }
 
     }
 
 
-    }
 
 
 

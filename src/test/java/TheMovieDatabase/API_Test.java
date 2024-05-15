@@ -8,7 +8,6 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.*;
 
 
-import javax.swing.text.html.HTML;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +23,8 @@ public class API_Test {
     Faker randomUreteci=new Faker();
     String userName="";
     String password="";
+    String url="https://api.themoviedb.org/3/account";
+
 
     @BeforeClass
     public void SetUp() {
@@ -52,9 +53,9 @@ public class API_Test {
 
    // @Test(dependsOnMethods = "PreLogin")
     public void Login(){
-
         Map<String,Object> body=new HashMap<>();
-        userName=randomUreteci.name().fullName();
+
+        userName="TestTitans_Meeer.t";
         password="123456789";
         body.put("username",userName);
         body.put("password",password);
@@ -75,8 +76,20 @@ public class API_Test {
                 ;
     }
 
-    @Test
+    @Test(dependsOnMethods = "PreLogin")
     public void GetAccountDetails(){
+
+        given()
+                .spec(reqSpec)
+
+
+                .when()
+                .get(url)
+
+
+                .then()
+                .statusCode(200)
+                ;
 
     }
 

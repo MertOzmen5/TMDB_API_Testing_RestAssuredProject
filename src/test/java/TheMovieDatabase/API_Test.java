@@ -24,6 +24,7 @@ public class API_Test {
     String userName="";
     String password="";
     String url="https://api.themoviedb.org/3/account";
+    int id;
 
 
     @BeforeClass
@@ -79,6 +80,7 @@ public class API_Test {
     @Test(dependsOnMethods = "PreLogin")
     public void GetAccountDetails(){
 
+        id=
         given()
                 .spec(reqSpec)
 
@@ -89,6 +91,24 @@ public class API_Test {
 
                 .then()
                 .statusCode(200)
+                .extract().path("id")
+                ;
+        System.out.println("id = " + id);
+
+    }
+
+    @Test
+    public void AddMovietoFavorites(){
+
+        given()
+                .spec(reqSpec)
+
+                .when()
+                .post(url+id)
+
+
+                .then()
+
                 ;
 
     }

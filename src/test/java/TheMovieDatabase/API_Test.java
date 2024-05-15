@@ -164,6 +164,21 @@ public class API_Test {
                 ;
     }
 
+    @Test(dependsOnMethods = "GetFavoriteMovies")
+    public void GetFavoriteTV(){
+
+        given()
+                .spec(reqSpec)
+
+                .when()
+                .get(url + "/" + id + "/" + "favorite"+"/tv")
+
+
+                .then()
+                .statusCode(200)
+                ;
+    }
+
 
 
 }
